@@ -5,11 +5,11 @@ sections:
   - actions:
       - is_primary: false
         is_scrolly: false
-        label: Get Started
+        label: Learn More
         url: generic.md
     component: intro.html
     content: A non-profit helping build quality software for non-profits.
-    img_path: images/pic01.jpg
+    img_path: /uploads/sorenbaird.jpg
     title: Sore Bear Development
     type: intro
   - actions:
