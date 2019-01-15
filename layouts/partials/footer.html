@@ -1,0 +1,14 @@
+<!-- Footer -->
+<section id="footer" class="wrapper split style2">
+    <div class="inner">
+        {{ if .Site.Params.social.enabled }}
+            {{ partial "social.html" . }}
+        {{ end }}
+        {{ if .Site.Params.footer.enable_contact_section }}
+            {{ partial "contact.html" . }}
+        {{ end }}
+    </div>
+    <div class="copyright">
+        <p>&copy; {{ .Site.Title }}. All rights reserved. {{ .Site.Params.footer.line_phrase }}</p>
+    </div>
+</section>

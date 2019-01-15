@@ -1,0 +1,432 @@
+backend:
+  name: git-gateway
+  branch: master
+media_folder: static/uploads
+public_folder: /uploads
+collections:
+  - name: config
+    label: Config
+    files:
+      - name: config
+        label: Config
+        file: config.yaml
+        fields:
+          - name: title
+            label: Title
+            widget: text
+            required: true
+          - name: params
+            label: Params
+            widget: object
+            required: true
+            fields:
+              - name: menu
+                widget: object
+                required: false
+                label: Menu Configuration
+                fields:
+                  - name: actions
+                    widget: list
+                    required: false
+                    label: Menu Action Buttons
+                    hint: The action buttons displayed at the bottom of the menu
+                    field:
+                      label: String
+                      name: string
+                      widget: string
+              - name: social
+                widget: object
+                required: false
+                label: Footer Social Section Configuration
+                fields:
+                  - name: enabled
+                    widget: boolean
+                    required: false
+                    label: Enabled
+                    default: false
+                    hint: Displays the social section in the page footer
+                  - name: title
+                    widget: string
+                    required: false
+                    label: Section Title
+                    hint: The bold text displayed at the top of the section
+                  - name: social_content
+                    widget: markdown
+                    required: false
+                    label: Section Text
+                    hint: The text displayed below the section title
+                  - name: social_links
+                    widget: list
+                    required: false
+                    label: Social Media
+                    hint: >-
+                      A list of social media icons displayed along the bottom of
+                      the section
+                    fields:
+                      - name: title
+                        widget: string
+                        required: true
+                        label: Icon Title
+                      - name: icon
+                        widget: string
+                        required: true
+                        label: Icon
+                        hint: Font Awesome icon
+                      - name: link_url
+                        widget: string
+                        required: false
+                        label: URL
+              - name: footer
+                widget: object
+                required: false
+                label: Footer Configuration
+                fields:
+                  - name: enable_contact_section
+                    widget: boolean
+                    required: false
+                    label: Enable Contact Section
+                    default: false
+                    hint: Displays the contact section in the page footer
+                  - name: line_phrase
+                    widget: string
+                    required: false
+                    label: Copyright Phrase
+                    hint: The text displayed beside the page copyright
+  - name: home
+    label: Home
+    files:
+      - name: home
+        label: Home
+        file: content/_index.md
+        fields:
+          - name: title
+            widget: string
+            required: true
+            label: Page Title
+          - name: layout
+            widget: hidden
+            required: true
+            label: Layout
+            default: home
+          - name: sections
+            widget: list
+            required: false
+            label: Sections
+            hint: Home Sections
+            types:
+              - name: intro
+                widget: object
+                label: Intro Section
+                fields:
+                  - name: content
+                    widget: markdown
+                    required: false
+                    label: Section Content
+                    hint: The text displayed as section content
+                  - name: actions
+                    widget: list
+                    required: false
+                    label: Section Action Buttons
+                    fields:
+                      - name: label
+                        widget: string
+                        required: true
+                        label: Button Label
+                        hint: The text displayed inside the button
+                      - name: url
+                        widget: string
+                        required: false
+                        label: Button URL
+                      - name: is_scrolly
+                        widget: boolean
+                        required: false
+                        label: Is Scrolly
+                        default: false
+                        hint: >-
+                          Gives the button a scroll animation (if the button URL
+                          is a section ID)
+                      - name: is_primary
+                        widget: boolean
+                        required: false
+                        label: Is Primary
+                        default: false
+                        hint: Gives the button a primary color scheme
+                  - name: title
+                    widget: string
+                    required: true
+                    label: Section Title
+                    default: Reflex
+                    hint: The bold text displayed at the top of the section
+                  - name: img_path
+                    widget: image
+                    required: false
+                    label: Image
+                    hint: The image displayed on the left side of the section
+                  - name: component
+                    widget: hidden
+                    required: true
+                    label: Section Component
+                    default: intro.html
+              - name: features
+                widget: object
+                label: Features Section
+                fields:
+                  - name: content
+                    widget: markdown
+                    required: false
+                    label: Section Content
+                    hint: The text displayed as section content
+                  - name: actions
+                    widget: list
+                    required: false
+                    label: Section Action Buttons
+                    fields:
+                      - name: label
+                        widget: string
+                        required: true
+                        label: Button Label
+                        hint: The text displayed inside the button
+                      - name: url
+                        widget: string
+                        required: false
+                        label: Button URL
+                      - name: is_scrolly
+                        widget: boolean
+                        required: false
+                        label: Is Scrolly
+                        default: false
+                        hint: >-
+                          Gives the button a scroll animation (if the button URL
+                          is a section ID)
+                      - name: is_primary
+                        widget: boolean
+                        required: false
+                        label: Is Primary
+                        default: false
+                        hint: Gives the button a primary color scheme
+                  - name: title
+                    widget: string
+                    required: true
+                    label: Section Title
+                    default: Ipsum malesuada
+                    hint: The bold text displayed at the top of the section
+                  - name: subtitle
+                    widget: markdown
+                    required: false
+                    label: Section Subtitle
+                    hint: The text displayed below the section title
+                  - name: symbol_display
+                    widget: list
+                    required: false
+                    label: Icon Circles
+                    hint: The icons displayed below the section subtitle
+                    fields:
+                      - name: title
+                        widget: string
+                        required: true
+                        label: Icon Title
+                      - name: icon
+                        widget: string
+                        required: true
+                        label: Icon
+                        hint: Font Awesome icon
+                  - name: component
+                    widget: hidden
+                    required: true
+                    label: Section Component
+                    default: features.html
+              - name: spotlight
+                widget: object
+                label: Spotlight Section
+                fields:
+                  - name: content
+                    widget: markdown
+                    required: false
+                    label: Section Content
+                    hint: The text displayed as section content
+                  - name: actions
+                    widget: list
+                    required: false
+                    label: Section Action Buttons
+                    fields:
+                      - name: label
+                        widget: string
+                        required: true
+                        label: Button Label
+                        hint: The text displayed inside the button
+                      - name: url
+                        widget: string
+                        required: false
+                        label: Button URL
+                      - name: is_scrolly
+                        widget: boolean
+                        required: false
+                        label: Is Scrolly
+                        default: false
+                        hint: >-
+                          Gives the button a scroll animation (if the button URL
+                          is a section ID)
+                      - name: is_primary
+                        widget: boolean
+                        required: false
+                        label: Is Primary
+                        default: false
+                        hint: Gives the button a primary color scheme
+                  - name: title
+                    widget: string
+                    required: true
+                    label: Section Title
+                    default: Duis torquent
+                    hint: The bold text displayed at the top of the section
+                  - name: subtitle
+                    widget: markdown
+                    required: false
+                    label: Section Subtitle
+                    hint: The text displayed below the section title
+                  - name: component
+                    widget: hidden
+                    required: true
+                    label: Section Component
+                    default: spotlight.html
+              - name: mission
+                widget: object
+                label: Mission Section
+                fields:
+                  - name: content
+                    widget: markdown
+                    required: false
+                    label: Section Content
+                    hint: The text displayed as section content
+                  - name: actions
+                    widget: list
+                    required: false
+                    label: Section Action Buttons
+                    fields:
+                      - name: label
+                        widget: string
+                        required: true
+                        label: Button Label
+                        hint: The text displayed inside the button
+                      - name: url
+                        widget: string
+                        required: false
+                        label: Button URL
+                      - name: is_scrolly
+                        widget: boolean
+                        required: false
+                        label: Is Scrolly
+                        default: false
+                        hint: >-
+                          Gives the button a scroll animation (if the button URL
+                          is a section ID)
+                      - name: is_primary
+                        widget: boolean
+                        required: false
+                        label: Is Primary
+                        default: false
+                        hint: Gives the button a primary color scheme
+                  - name: title
+                    widget: string
+                    required: true
+                    label: Section Title
+                    default: Amet ullamcorper
+                    hint: The bold text displayed at the top of the section
+                  - name: component
+                    widget: hidden
+                    required: true
+                    label: Section Component
+                    default: mission.html
+  - name: page
+    label: Pages
+    folder: content/
+    filter:
+      field: layout
+      value: page
+    create: true
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - name: title
+        widget: string
+        required: true
+        label: Page Title
+      - name: subtitle
+        widget: markdown
+        required: false
+        label: Page Subtitle
+        hint: The text displayed below the page title
+      - name: img_path
+        widget: image
+        required: false
+        label: Content Image
+        hint: The image displayed in the page content
+      - name: layout
+        widget: hidden
+        required: true
+        label: Layout
+        default: page
+      - name: body
+        label: Content
+        widget: markdown
+  - name: post
+    label: Posts
+    folder: content/posts
+    filter:
+      field: layout
+      value: page
+    create: true
+    extension: md
+    slug: '{{slug}}'
+    fields:
+      - name: title
+        widget: string
+        required: true
+        label: Page Title
+      - name: subtitle
+        widget: markdown
+        required: false
+        label: Page Subtitle
+        hint: The text displayed below the page title
+      - name: excerpt
+        widget: markdown
+        required: false
+        label: Post Excerpt
+        hint: The excerpt displayed in the spotlights section of the home page
+      - name: img_path
+        widget: image
+        required: false
+        label: Content Image
+        hint: The image displayed in the page content
+      - name: post_button_label
+        widget: string
+        required: false
+        label: Spotlights Button label
+        hint: The text displayed in the home spotligh button
+      - name: layout
+        widget: hidden
+        required: true
+        label: Layout
+        default: page
+      - name: date
+        widget: date
+        required: true
+        label: Post Date
+      - name: body
+        label: Content
+        widget: markdown
+  - name: elements
+    label: Elements
+    files:
+      - name: elements
+        label: Elements
+        file: content/elements.md
+        fields:
+          - name: title
+            widget: string
+            required: true
+            label: Page Title
+          - name: layout
+            widget: hidden
+            required: true
+            label: Layout
+            default: elements
